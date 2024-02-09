@@ -28,5 +28,3 @@ rfbrowser init
 
 ### Finally Run Test Case
 run the test case inside imBook.robot to reserve a place for your car.
-
-Enjoy :)
