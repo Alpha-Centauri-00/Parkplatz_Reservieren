@@ -1,4 +1,4 @@
-vars.robot
+tasks/vars.robot
 results/
 # Byte-compiled / optimized / DLL files
 __pycache__/
