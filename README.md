@@ -2,7 +2,7 @@
 
 ### Setting Up and Managing a Python Virtual Environment
 
-## Introduction
+## Instructions
 A virtual environment is a self-contained Python environment that allows you to manage dependencies and isolate project-specific packages. This guide will walk you through creating and managing a virtual environment.
 
 ### Create a Virtual Environment
@@ -26,7 +26,7 @@ after we install all dependenceies in our project we still need to initiate Robo
 rfbrowser init
 ```
 
-# Finally Run Test Case
+### Finally Run Test Case
 run the test case inside imBook.robot to reserve a place for your car.
 
 Enjoy :)
