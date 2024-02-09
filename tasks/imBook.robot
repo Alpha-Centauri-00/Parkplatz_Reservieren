@@ -1,6 +1,6 @@
 *** Settings ***
 Library     Browser
-Library     utility.py
+Library     ..//config//utility.py
 Resource    vars.robot
 
 
