@@ -14,9 +14,7 @@ Login to imBook
     Fill Text                      ${input-username}    ${User_name}
     Fill Secret                    ${input-password}    ${Pass_word}
     Click                          ${btn-login}
-
     Wait Until Network Is Idle
-    #Sleep    5s
 
 Choose Parkplatz
     Select Options By    ${Niedersachsen_path}        label    Niedersachsen
@@ -24,6 +22,11 @@ Choose Parkplatz
     Select Options By    ${NDS_Parkplatz_path}        label    NDS Parkplatz
     Select Options By    ${Parkplatz_path}            label    Parkplatz
     
+
+Choose Katterppeln
+    Select Options By    ${Niedersachsen_path}        label    Niedersachsen
+    Select Options By    ${Kattreppeln_path}          label    Kattreppeln 20
+
 
 Reserve parking if available
     ${text}               Check OrNo
@@ -45,6 +48,28 @@ Reserve parking if available
     END
 
 
+Reserve a desk-place 
+    
+    ${successful_ico}     Get AbsPath    ico_name=successful.ico
+    ${unsuccessful_ico}   Get AbsPath    ico_name=unsuccessful.ico
+
+    ${text}               Get Next Day
+    ${day_number}         Get Current Day Number    ${text[0:2]}
+
+    ${count}              Get Element Count    //div[@id='location_0_building_0_room_1_workspace_4_${day_number}_container']/div//*[count(p) = 1 and contains(p, '${text}')]
+    
+
+    IF  ${count} > 0
+        Click    //div[@id='location_0_building_0_room_1_workspace_4_${day_number}_container']/div//*[count(p) = 1 and contains(p, '${text}')]
+        Show Notification    title=Reservation successful    message=Your reservation was successful for tomorrow ${text} on the right Office   _icon=${successful_ico}
+    
+    ELSE
+        Show Notification    title=Reservation unsuccessful    message=Your reservation was NOT successful for tomorrow ${text} on the right Office   _icon=${unsuccessful_ico}
+
+        
+    END
+    
+
 *** Test Cases ***
 
 Open imBook and reserve a parking spot
@@ -53,3 +78,7 @@ Open imBook and reserve a parking spot
     Reserve parking if available
     
 
+Get available seats
+    Login to imBook
+    Choose Katterppeln
+    Reserve a desk-place

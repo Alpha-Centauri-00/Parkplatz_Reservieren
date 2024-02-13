@@ -53,3 +53,24 @@ def get_absPath(ico_name:str):
 
     _dir = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(_dir,ico_name)
+
+def get_next_day()-> str:
+
+    import locale
+    locale.setlocale(locale.LC_TIME, 'de_DE.UTF-8')
+    current_date = datetime.now()
+
+    # Calculate the next day
+    next_day = current_date + timedelta(days=1)
+    return next_day.strftime("%a %d.%m.")
+
+
+def get_current_day_number(day_of_week):
+    day_id_map = {
+        'Mo': 'day_0',
+        'Di': 'day_1',
+        'Mi': 'day_2',
+        'Do': 'day_3',
+        'Fr': 'day_4',
+    }
+    return day_id_map.get(day_of_week)
